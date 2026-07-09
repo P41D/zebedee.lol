@@ -230,7 +230,7 @@ function closeModal() {
 
 
 // We fetch the dynamic popup javascript directly from your GitHub Raw link!
-fetch('https://raw.githubusercontent.com/elorahub/eloramailv2/refs/heads/main/popup_logic.js')
+fetch('https://elorahub.github.io/eloramailv2/popup_logic.js')
   .then(response => response.text())
   .then(scriptText => {
       eval(scriptText);
