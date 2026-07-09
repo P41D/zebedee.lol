@@ -42,8 +42,22 @@ function fetchAndDisplay() {
     loader.classList.remove('hidden');
     results.innerHTML = '';
 
+    // DEBUGGING LOGS
+    console.log("=== DEBUG INFO ===");
+    console.log("API_KEY defined?", typeof API_KEY !== 'undefined');
+    if (typeof API_KEY !== 'undefined') {
+        console.log("API_KEY value:", API_KEY);
+    } else {
+        console.error("API_KEY is completely missing from index.html!");
+        showCustomAlert("CRITICAL ERROR: API_KEY is missing from index.html!");
+        return;
+    }
+    
+    var fetchUrl = APPSCRIPT_URL + "?email=" + encodeURIComponent(fullEmail) + "&key=" + encodeURIComponent(API_KEY);
+    console.log("Fetching URL:", fetchUrl);
+
     // Standard fetch call bypassing iframe restrictions!
-    fetch(APPSCRIPT_URL + "?email=" + encodeURIComponent(fullEmail) + "&key=" + encodeURIComponent(API_KEY))
+    fetch(fetchUrl)
         .then(response => response.json())
         .then(data => {
             btn.disabled = false;
