@@ -301,13 +301,8 @@ body { scrollbar-width: none; -ms-overflow-style: none; }
   </style>
 
   <script>
-    // ==========================================
-    // ⚙️ DEFAULT CONFIGURATION
-    // You can put your domain(s) and brand name here!
-    // Example: var DEFAULT_DOMAINS = "sowon.cfd, domain2.com, domain3.com";
-    // ==========================================
-    var DEFAULT_BRAND = "WISH SHOPPE ❤️";
-    var DEFAULT_DOMAINS = "sowon.cfd"; 
+    var DEFAULT_BRAND = "ZEBEDEE ❤️";
+    var DEFAULT_DOMAINS = "zebedee.lol"; 
     var APPSCRIPT_URL = "https://script.google.com/macros/s/AKfycbxijaDgog5Q9MpFEeriWtG4NyZWiEC9TvsswzBMQzfBl9ljEBVn2GQ6gD_GiI9SlZcbLA/exec";
   </script>
 </head>
@@ -406,6 +401,13 @@ body { scrollbar-width: none; -ms-overflow-style: none; }
 
   </div>
 
+  <!-- Footer -->
+  <footer id="footer" class="mt-auto py-6 border-t transition-colors duration-300 glass-effect w-full" style="background-color: var(--header-bg); border-color: var(--border-color); color: var(--nav-text);">
+    <div class="max-w-xl mx-auto px-4 text-center text-sm opacity-80 font-medium">
+      <p>Copyright <a id="brand" href="https://t.me/eloraph" target="_blank" class="font-bold hover:underline transition-all" style="color: inherit;">ELORAHUB ❤️</a> © <span id="year"></span>. All rights reserved.</p>
+    </div>
+  </footer>
+
   <div id="customAlertModal" class="fixed inset-0 z-[999] flex items-center justify-center bg-black/50 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm">
     <div class="glass-effect rounded-2xl shadow-2xl p-6 w-11/12 max-w-sm transform scale-95 transition-transform duration-300" id="modalContent" style="background-color: var(--card-bg);">
       <div class="flex justify-between items-center mb-2">
@@ -422,6 +424,8 @@ body { scrollbar-width: none; -ms-overflow-style: none; }
       </div>
     </div>
   </div>
+
+  <!-- Connect to the separated Javascript logic -->
   <script src="script.js"></script>
 </body>
 </html>
