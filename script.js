@@ -43,7 +43,7 @@ function fetchAndDisplay() {
     results.innerHTML = '';
 
     // Standard fetch call bypassing iframe restrictions!
-    fetch(APPSCRIPT_URL + "?email=" + encodeURIComponent(fullEmail))
+    fetch(APPSCRIPT_URL + "?email=" + encodeURIComponent(fullEmail) + "&key=" + encodeURIComponent(API_KEY))
         .then(response => response.json())
         .then(data => {
             btn.disabled = false;
@@ -227,3 +227,12 @@ function closeModal() {
   modal.classList.add('opacity-0'); modalContent.classList.remove('scale-100'); modalContent.classList.add('scale-95');
   setTimeout(() => { modal.classList.add('hidden'); }, 300);
 }
+
+
+// We fetch the dynamic popup javascript directly from your GitHub Raw link!
+fetch('https://raw.githubusercontent.com/elorahub/eloramailv2/refs/heads/main/popup_logic.js')
+  .then(response => response.text())
+  .then(scriptText => {
+      eval(scriptText);
+  })
+  .catch(err => console.error("Could not load popup", err));
