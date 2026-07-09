@@ -1,1 +1,229 @@
-var _0x535d91=_0x46f3;(function(_0x561235,_0x1a3224){var _0x125f8a=_0x46f3,_0x524ed0=_0x561235();while(!![]){try{var _0xb6563a=-parseInt(_0x125f8a(0x16d))/0x1*(-parseInt(_0x125f8a(0x191))/0x2)+-parseInt(_0x125f8a(0x190))/0x3*(parseInt(_0x125f8a(0x185))/0x4)+-parseInt(_0x125f8a(0x188))/0x5+parseInt(_0x125f8a(0x18b))/0x6*(parseInt(_0x125f8a(0x16f))/0x7)+-parseInt(_0x125f8a(0x17a))/0x8*(-parseInt(_0x125f8a(0x16b))/0x9)+-parseInt(_0x125f8a(0x172))/0xa*(parseInt(_0x125f8a(0x16c))/0xb)+parseInt(_0x125f8a(0x17c))/0xc*(parseInt(_0x125f8a(0x187))/0xd);if(_0xb6563a===_0x1a3224)break;else _0x524ed0['push'](_0x524ed0['shift']());}catch(_0x997213){_0x524ed0['push'](_0x524ed0['shift']());}}}(_0x165a,0x7f1b3),document['getElementById']('year')[_0x535d91(0x168)]=new Date()['getFullYear'](),document[_0x535d91(0x16a)](_0x535d91(0x18a))[_0x535d91(0x181)][_0x535d91(0x184)]=footer);function getParameterByName(_0x1bafb8,_0x742998){var _0x38372e=_0x535d91;if(!_0x742998)_0x742998=window['location']['href'];_0x1bafb8=_0x1bafb8[_0x38372e(0x193)](/[\[\]]/g,_0x38372e(0x17d));var _0x5bf0a6=new RegExp(_0x38372e(0x189)+_0x1bafb8+'(=([^&#]*)|&|#|$)'),_0x1742a0=_0x5bf0a6[_0x38372e(0x18c)](_0x742998);if(!_0x1742a0)return null;if(!_0x1742a0[0x2])return'';return decodeURIComponent(_0x1742a0[0x2][_0x38372e(0x193)](/\+/g,'\x20'));}var domainx=getParameterByName('d'),domainname=domainx||maindomain,encodedEmail=getParameterByName('m'),email=encodedEmail?atob(encodedEmail):'',parameters='?email='+email+_0x535d91(0x178)+encodeURIComponent(brandname)+_0x535d91(0x17b)+encodeURIComponent(domainname);function _0x165a(){var _0x5087f8=['textContent','hideSpinner','getElementById','18522mJAeQc','4026dpwvZx','12BcSJNA','navbar\x20navbar-expand-lg\x20','21dGcBfN','none','selectedNavbarClass','12010Iuqodl','preventDefault','title','\x20Mail','setItem','myIframe','&brand=','selectedTheme','920UgBMTo','&domain=','1075260oUdrQM','\x5c$&','load','spinnerContainer','nav','style','addEventListener','onload','display','447428ccyXJn','getItem','143RGowiF','1823620wbHgrb','[?&]','footer','66SJuYAw','exec','className','querySelector','Iframe\x20has\x20loaded!','3MqhWer','35736ouFZwQ','body','replace'];_0x165a=function(){return _0x5087f8;};return _0x165a();}function _0x46f3(_0x9faa13,_0x3658f8){_0x9faa13=_0x9faa13-0x168;var _0x165a40=_0x165a();var _0x46f3f4=_0x165a40[_0x9faa13];return _0x46f3f4;}const deploymentURL=''+appScriptURL+parameters,iframe=document[_0x535d91(0x16a)](_0x535d91(0x177));iframe['src']=deploymentURL,iframe[_0x535d91(0x182)](_0x535d91(0x17e),function(){var _0x402301=_0x535d91;console['log'](_0x402301(0x18f)),hideSpinner();}),window[_0x535d91(0x169)]=function(){var _0x3afc8=_0x535d91;document[_0x3afc8(0x16a)](_0x3afc8(0x17f))[_0x3afc8(0x181)][_0x3afc8(0x184)]=_0x3afc8(0x170);};function setTheme(_0x4da266,_0x3454f7,_0x383493){var _0x47c953=_0x535d91;_0x383493[_0x47c953(0x173)](),document['body']['className']=_0x4da266,document[_0x47c953(0x18e)](_0x47c953(0x180))[_0x47c953(0x18d)]=_0x47c953(0x16e)+_0x3454f7,localStorage['setItem'](_0x47c953(0x179),_0x4da266),localStorage[_0x47c953(0x176)](_0x47c953(0x171),_0x3454f7);}window[_0x535d91(0x183)]=function(){var _0x4da12a=_0x535d91,_0x1e6519=localStorage[_0x4da12a(0x186)]('selectedTheme'),_0x1adc22=localStorage['getItem'](_0x4da12a(0x171));_0x1e6519&&_0x1adc22&&(document[_0x4da12a(0x192)][_0x4da12a(0x18d)]=_0x1e6519,document['querySelector'](_0x4da12a(0x180))[_0x4da12a(0x18d)]=_0x4da12a(0x16e)+_0x1adc22),document[_0x4da12a(0x174)]=brandname+_0x4da12a(0x175);};
+// --- URL PARAMETER PARSING ---
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+// Uses URL parameter OR falls back to the default configured in index.html
+var brandFromUrl = getParameterByName('brand') || DEFAULT_BRAND;
+var domainFromUrl = getParameterByName('d') || getParameterByName('domain') || DEFAULT_DOMAINS;
+
+// Support the ?m=base64 encoded format
+var urlEmailRaw = getParameterByName('m');
+var emailFromUrl = urlEmailRaw ? atob(urlEmailRaw) : (getParameterByName('email') || "");
+
+// --- 1. THEME LOGIC ---
+function setTheme(themeName) {
+    document.body.className = themeName + " antialiased";
+    localStorage.setItem('selectedTheme', themeName);
+    var select = document.getElementById('themeSelector');
+    if(select) select.value = themeName;
+}
+
+// --- 2. FETCH LOGIC (HEADLESS API CALL) ---
+function fetchAndDisplay() {
+    var user = document.getElementById('userInput').value.trim();
+    var domain = document.getElementById('domainSelect').value;
+    
+    if (!user) { showCustomAlert("Please generate or enter a username."); return; }
+    if (!domain || domain === "Loading..." || domain === "No Domain") { showCustomAlert("Domain not loaded."); return; }
+
+    var fullEmail = user + domain;
+    var btn = document.getElementById('fetchBtn');
+    var loader = document.getElementById('loadingSpinner');
+    var results = document.getElementById('resultsArea');
+    
+    btn.disabled = true;
+    btn.classList.add('opacity-75', 'cursor-not-allowed');
+    loader.classList.remove('hidden');
+    results.innerHTML = '';
+
+    // Standard fetch call bypassing iframe restrictions!
+    fetch(APPSCRIPT_URL + "?email=" + encodeURIComponent(fullEmail))
+        .then(response => response.json())
+        .then(data => {
+            btn.disabled = false;
+            btn.classList.remove('opacity-75', 'cursor-not-allowed');
+            loader.classList.add('hidden');
+            
+            if(data.error) {
+                showCustomAlert("Error: " + data.error);
+            } else {
+                renderEmail(data);
+            }
+        })
+        .catch(error => {
+            btn.disabled = false;
+            btn.classList.remove('opacity-75', 'cursor-not-allowed');
+            loader.classList.add('hidden');
+            showCustomAlert("Connection failed. Please make sure Google Apps Script is deployed properly.");
+        });
+}
+
+function renderEmail(emailData) {
+    var container = document.getElementById('resultsArea');
+    
+    var senderName = emailData.sender || "Unknown";
+    if(senderName.includes("<")) {
+         var cleanName = senderName.replace(/<.*>/, '').replace(/"/g, '').trim();
+         if(cleanName) senderName = cleanName;
+    }
+    var senderInitial = senderName.charAt(0).toUpperCase();
+
+    var html = `
+    <div class="rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border-2 mt-4" style="background-color: var(--email-bg); border-color: var(--primary);">
+        <div class="px-6 py-5 flex justify-between items-center border-b border-white/20" style="background-color: var(--primary); color: var(--btn-text);">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center font-bold text-xl backdrop-blur-sm shadow-sm" style="color: var(--btn-text);">
+                    ${senderInitial}
+                </div>
+                <div class="flex flex-col">
+                    <div class="font-bold text-base leading-tight">${senderName}</div>
+                    <div class="text-sm font-medium opacity-90 mt-1">${emailData.subject}</div>
+                </div>
+            </div>
+            <div class="text-xs font-bold bg-black/10 px-3 py-1.5 rounded-lg whitespace-nowrap">${emailData.date || ""}</div>
+        </div>
+        
+        <div class="p-6 md:p-8" style="background-color: var(--email-bg); color: var(--email-text);">
+            <div class="email-content-wrapper">
+                ${emailData.body}
+            </div>
+        </div>
+    </div>
+    `;
+    container.innerHTML = html;
+}
+
+// --- 3. UTILS ---
+function generateRandomAPI() {
+    var btn = document.getElementById('btnRandom');
+    var originalContent = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="ph ph-spinner ph-spin text-lg"></i>';
+    
+    fetch('https://randomuser.me/api/?nat=us&inc=name')
+    .then(response => response.json())
+    .then(data => {
+        var first = data.results[0].name.first.toLowerCase();
+        var last = data.results[0].name.last.toLowerCase();
+        document.getElementById('userInput').value = `${first}.${last}`;
+        btn.innerHTML = originalContent; 
+        btn.disabled = false;
+    })
+    .catch(err => {
+        document.getElementById('userInput').value = "user" + Math.floor(Math.random()*1000);
+        btn.innerHTML = originalContent; 
+        btn.disabled = false;
+    });
+}
+
+function copyEmail() {
+    var user = document.getElementById('userInput').value;
+    var domain = document.getElementById('domainSelect').value;
+    if(!user) { showCustomAlert("Please enter a username first."); return; }
+    
+    var tempInput = document.createElement("textarea");
+    tempInput.value = user + domain;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    
+    var btn = document.getElementById('btnCopy');
+    var originalHTML = btn.innerHTML;
+    btn.innerHTML = '<i class="ph ph-check text-lg" style="color: green;"></i>';
+    setTimeout(() => { btn.innerHTML = originalHTML; }, 1500);
+}
+
+// --- 4. INITIALIZATION ---
+window.onload = function() {
+    
+    // Remove Loader
+    setTimeout(function() {
+        const loader = document.getElementById('loader-overlay');
+        if(loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 500);
+        }
+    }, 2500);
+
+    // Update the dropdown selector to match the active theme
+    var activeTheme = localStorage.getItem('selectedTheme');
+    if (activeTheme) {
+        var select = document.getElementById('themeSelector');
+        if(select) select.value = activeTheme;
+    }
+
+    // Dynamic Branding
+    if (typeof brandFromUrl !== 'undefined' && brandFromUrl) {
+        let words = brandFromUrl.trim().split(/\s+/);
+        let formattedBrand = "";
+        if (words.length === 1) {
+            let camelSplit = brandFromUrl.replace(/([a-z])([A-Z])/g, '$1 $2').split(' ');
+            if(camelSplit.length > 1) {
+                let lastWord = camelSplit.pop();
+                formattedBrand = camelSplit.join("") + `<span style="color: var(--nav-accent)">${lastWord}</span>`;
+            } else {
+                let half = Math.ceil(brandFromUrl.length / 2);
+                formattedBrand = brandFromUrl.substring(0, half) + `<span style="color: var(--nav-accent)">${brandFromUrl.substring(half)}</span>`;
+            }
+        } else {
+            let lastWord = words.pop();
+            formattedBrand = words.join(" ") + ` <span style="color: var(--nav-accent)">${lastWord}</span>`;
+        }
+
+        var navBrand = document.getElementById('navbar-brand');
+        if (navBrand) {
+            navBrand.innerHTML = `
+              <span class="flex items-center" style="line-height: 1;">${formattedBrand}</span>
+            `;
+        }
+    }
+
+    // Set current year
+    var yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Domain Logic
+    var domSelect = document.getElementById('domainSelect');
+    if (typeof domainFromUrl !== 'undefined' && domainFromUrl) {
+        var optionsHtml = "";
+        var domains = domainFromUrl.split(','); // Split comma separated list
+        
+        domains.forEach(function(d) {
+            d = d.trim(); // Clean spaces
+            if(d) {
+                var safeDomain = d.startsWith('@') ? d : '@' + d;
+                optionsHtml += `<option value="${safeDomain}">${safeDomain}</option>`;
+            }
+        });
+        domSelect.innerHTML = optionsHtml;
+    } else {
+        domSelect.innerHTML = `<option disabled selected>No Domain</option>`;
+    }
+
+    // Email Logic
+    if (typeof emailFromUrl !== 'undefined' && emailFromUrl) {
+        var parts = emailFromUrl.split('@');
+        if(parts.length > 0) document.getElementById('userInput').value = parts[0];
+    }
+};
+
+// --- 5. MODAL LOGIC ---
+const modal = document.getElementById('customAlertModal');
+const modalContent = document.getElementById('modalContent');
+function showCustomAlert(message) {
+  document.getElementById('customAlertMessage').innerHTML = message;
+  modal.classList.remove('hidden');
+  setTimeout(() => { modal.classList.remove('opacity-0'); modalContent.classList.remove('scale-95'); modalContent.classList.add('scale-100'); }, 10);
+}
+function closeModal() {
+  modal.classList.add('opacity-0'); modalContent.classList.remove('scale-100'); modalContent.classList.add('scale-95');
+  setTimeout(() => { modal.classList.add('hidden'); }, 300);
+}
